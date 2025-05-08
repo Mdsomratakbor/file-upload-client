@@ -1,0 +1,36 @@
+<div class="upload-container p-4 border rounded shadow-sm bg-light">
+    <h2 class="mb-3">Upload File in Chunks</h2>
+  
+    <div class="mb-3">
+      <input type="file" class="form-control" (change)="onFileSelected($event)" />
+    </div>
+  
+    <button
+      class="btn btn-primary mb-3"
+      [disabled]="!selectedFile"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  
+    <div *ngIf="uploadMessage" class="alert alert-info">
+      {{ uploadMessage }}
+    </div>
+  
+    <div *ngIf="progress > 0 && progress < 100" class="progress mb-3">
+      <div
+        class="progress-bar progress-bar-striped"
+        role="progressbar"
+        [style.width.%]="progress"
+      >
+        {{ progress }}%
+      </div>
+    </div>
+  
+    <mat-progress-bar
+      *ngIf="progress > 0 && progress < 100"
+      mode="determinate"
+      [value]="progress"
+    ></mat-progress-bar>
+  </div>
+  

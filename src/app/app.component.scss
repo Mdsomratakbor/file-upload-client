@@ -1,0 +1,42 @@
+/* Layout Styles */
+.sidenav-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-main-content {
+    padding: 20px;
+  }
+  
+  .app-footer {
+    background-color: #2196F3;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  mat-sidenav {
+    width: 250px;
+  }
+  
+  mat-toolbar {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  mat-nav-list {
+    margin-top: 20px;
+  }
+  
+  mat-list-item {
+    cursor: pointer;
+  }
+  
+  /* Responsive Design: Ensure the sidenav toggles on smaller screens */
+  @media (max-width: 768px) {
+    mat-sidenav {
+      width: 100%;
+    }
+  }
+  
