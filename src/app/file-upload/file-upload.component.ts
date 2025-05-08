@@ -47,7 +47,7 @@ export class FileUploadComponent {
     });
 
     // Track upload progress
-    this.fileUploadService.progressSubject$.subscribe(progress => {
+    this.fileUploadService.uploadProgress$.subscribe(progress => {
       this.progress = progress;
     });
   }

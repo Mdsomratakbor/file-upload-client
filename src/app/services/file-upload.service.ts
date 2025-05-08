@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject,forkJoin } from 'rxjs';
+import { Observable, Subject, forkJoin } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -54,18 +55,18 @@ export class FileUploadService {
         currentChunk++;
       }
 
-      return Observable.forkJoin(chunkObservables); // Combine all chunk uploads
+      return forkJoin(chunkObservables); // Use forkJoin directly
     };
 
     // Return observable with progress updates
     return new Observable(observer => {
       uploadChunks().subscribe({
-        next: (response:any) => {
+        next: (response: any) => {
           this.progressSubject.next(100); // Once upload is complete, set progress to 100%
           observer.next({ message: 'File upload complete' });
           observer.complete();
         },
-        error: (error:any) => {
+        error: (error: any) => {
           this.progressSubject.error(error); // Emit error if something goes wrong
           observer.error(error);
         }
